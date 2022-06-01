@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller_edificios : MonoBehaviour
+public class Pruebas : MonoBehaviour
 {
     public GameObject[] azulitos;
     //[SerializeField] bool noblue = false;
@@ -61,7 +61,7 @@ public class Controller_edificios : MonoBehaviour
 
     //Nuestra variable TapCount nos ayudará a contar los touch que se han dado 
     public int TapCount;
-    //bool galleta;
+    [SerializeField] bool galleta;
 
 
 
@@ -79,7 +79,7 @@ public class Controller_edificios : MonoBehaviour
         normalillos = GameObject.FindGameObjectsWithTag(tagNameNormal);
         //TapCount tiene que estar en 0 al principio ya que no se ha dado ningun touch hasta este punto
         TapCount = 0;
-        //galleta = false;
+        galleta = false;
 
 
 
@@ -420,196 +420,197 @@ public class Controller_edificios : MonoBehaviour
 
     void Update()
     {
+
+
         edificio_newtag = GameObject.FindGameObjectWithTag(tagNew);
 
 
         //Estas líneas de código nos permiten detectar un touch sobre un objeto dentro de la escena
         if (Input.GetMouseButtonDown(0))
         {
+
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                //Por cada touch sobre un edificio se suma +1
-                //**********************************************
+              
+                //**********************************************************************************************************
+                //**********************************************************************************************************
+                //COMPORTAMIENTO EDIFICIO ESTAMBUL
 
-                //**********************************************
-                //CÓDIGO PARA EL EDIFICIO ESTAMBUL
-                if (hit.transform.name == "Estambul")
+                if (hit.transform.name == "Estambul" /*&& galleta == false*/)
                 {
+                    //Si la booleana es verdadera entonces significa que se había hecho un touch sobre algun edificio anteriormente
+                    //por lo tanto mandaremos el valor de TapCount a 0
+                   
+                    //Comentario que nos indica el valor actual de nuestra variable TapCount
 
-                    //****************************************************************************
-                    //****************************************************************************
-                    //Tenemos que mandar buscar en la escena un objeto que tengta el tagNameBlue
-                    edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
-                    TapCount += 1;
+                    //Buscaremoss un objeto con el tag que tienen los edificios azules
+                    //esto lo haremos para que podamos ver si está activado algun edificio azul en escena
 
-                    //1 TOUCH
-                    //El primer touch solo nos va a servir para poder guardarlo en caso de que se haya dado por equivocación
-                    //de este modo podremos eliminarlo si se da touch sobre un edificio, de este modo podremos dar 2 touch para seleccionar el nuevo
-                    if (TapCount == 1)
+                    
+
+
+                    if (galleta == false)
                     {
-                        Debug.Log("Has dado 1 touch");
-                        Debug.Log("Ahora TapCount vale:" + " " + TapCount);
+                        Debug.Log("Booleana desactivada");
+                        edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
+                        TapCount += 1;
+
+                        if (TapCount == 1)
+                        {
+                            Debug.Log("1 Touch");
+                            galleta = true;
+                        }
+                        else if(TapCount == 2)
+                        {
+                            Debug.Log("2 Touch");
+                        }
+
 
                     }
-                    //2 TOUCH
-                    else if (TapCount == 2)
+
+                    else if (galleta == true)
                     {
-                        Debug.Log("Has dado 2 touch");
-                        Debug.Log("Ahora TapCount vale:" + " " + TapCount);
-                        TapCount = 0;
+                        Debug.Log("Te puedes ir a hacer una paja a mano cambiada");
+                        edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
 
-                        //CÓDIGO SI NO HAY UN EDIFICIO AZUL ACTIVADO 
-                        if (edificio_blue == false)
+                        TapCount += 1;
+
+                        //Si se da 1 Touch entonces ejecuta el código
+                        if (TapCount == 1)
                         {
-                            Debug.Log("No hay edificio blue");
-                            azulitos[3].SetActive(true);
-                            normalillos[41].tag = tagNew;
-                            recolector = normalillos[41];
-                            recolector.SetActive(false);
-
-                            Debug.Log("Ahora TapCount es: " + " " + TapCount);
+                            Debug.Log("1 Touch");
+                    
 
                         }
 
-                        //***********************************************************************
-                        //***********************************************************************
-                        //CÓDIGO SI HAY UN EDIFICIO AZUL ACTIVADO
-                        if (edificio_blue == true)
+
+                        //Si se dan 2 Touch ejecuta el código
+                        else if (TapCount == 2)
                         {
-                            edificio_blue.SetActive(false);
-                            recolector.tag = tagNameNormal;
-                            recolector.SetActive(true);
-                            recolector = null;
-
-                            if(recolector == null)
-                            {
-                                azulitos[3].SetActive(true);
-                                normalillos[41].SetActive(false);
-                                normalillos[41].tag = tagNew;
-                                recolector = normalillos[41];
-                                recolector.SetActive(false);
-                            }
-
+                            Debug.Log("2 Touch");
+                           
+              
                         }
+
+
+
                     }
+
+                    //Por cada touch se suma +1 en nuestra variabale TapCount
+
+
+
+
                 }
 
-                //CÓDIGO PARA EL EDIFICIO ESTAMBUL BLUE
-                if (hit.transform.name == "Estambul_blue")
+                /*if (hit.transform.name == "Estambul_blue")
                 {
-                    Debug.Log("Deseleccionaste" + " " + hit.transform.name);
+                    edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
+                    Debug.Log(TapCount);
                     TapCount += 1;
+                    Debug.Log(TapCount);
 
-                    if (TapCount == 1)
+
+                    //**************************************************************************
+                    //**************************************************************************
+                    //Si das 2 touch sobre el edificio azul entonces ejecuta el siguiente código
+                    if (TapCount == 2)
                     {
-                        Debug.Log("Has dado 1 touch");
-                    }
-                    else if (TapCount == 2)
-                    {
-                        Debug.Log("Has dado 2 touch");
-                        //Regresamos el valor original de TapCount a 0 para que se pueda volver a seleccionar desde 0
-                        TapCount = 0;
-                        //******************************************************************************************* 
+                        Debug.Log("Has dado 2 touch al edificio azul");
+                        Debug.Log("Deseleccionaste" + " " + hit.transform.name);
+                        //moscú_normal.SetActive(true);
                         azulitos[3].SetActive(false);
                         normalillos[41].tag = tagNameNormal;
                         recolector.SetActive(true);
                         recolector = null;
-
-                    }
-
-                }
-                //¡Hasta esta línea de código tenemos la siguiente funcionalidad!:
-                //Podemos seleccionar con double touch un edificio y deseleccionarlo con double touch
-                //CÓDIGO PARA EL EDIFICIO MOSCÚ
-                if (hit.transform.name == "Moscú")
-                {
-                    //****************************************************************************
-                    //****************************************************************************
-                    //Tenemos que mandar buscar en la escena un objeto que tengta el tagNameBlue
-                    edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
-                    TapCount += 1;
-
-                    //1 TOUCH
-                    if (TapCount == 1)
-                    {
-                        Debug.Log("Has dado 1 touch");
-                    }
-                    //2 TOUCH
-                    else if (TapCount == 2)
-                    {
-                        Debug.Log("Has dado 2 touch");
                         TapCount = 0;
+                        Debug.Log(TapCount);
 
-                        if (edificio_blue == false)
+                    }
+
+
+                    
+                }*/
+
+
+              
+
+
+                //*******************************************************************************************
+                //*******************************************************************************************
+                //Al dar touch sobre Moscú y teniendo la variable booleana en true que se ejecute el siguiente código
+
+
+                if (hit.transform.name == "Moscú" /*&& galleta == true*/)
+                {
+
+                    if (galleta == false)
+                    {
+                        Debug.Log("Booleana desactivada");
+                        edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
+                        TapCount += 1;
+
+                        if (TapCount == 1)
                         {
-                            //Si le damos touch al edificio Moscú
-                            //nos activara el edificio Moscú azul.
-                            azulitos[57].SetActive(true);
-                            normalillos[16].tag = tagNew;
-                            recolector = normalillos[16];
-                            recolector.SetActive(false);
-                            Debug.Log("Ahora TapCount es: " + " " + TapCount);
+                            Debug.Log("1 Touch");
+                            //La variable galleta pasa a ser true
+                            //galleta = true;
+                            //Debug.Log("La booleana es" + " " + galleta);
                         }
-
-
-                        //***************************************************************
-                        //***************************************************************
-                        //CÓDIGO SI HAY UN EDIFICIO AZUL ACTIVADO
-                        if (edificio_blue == true)
+                        else if (TapCount == 2)
                         {
-                            edificio_blue.SetActive(false);
-                            recolector.tag = tagNameNormal;
-                            recolector.tag = tagNameNormal;
-                            recolector.SetActive(true);
-                            recolector = null;
-
-                            if (recolector == null)
-                            {
-
-                                azulitos[57].SetActive(true);
-                                normalillos[16].SetActive(false);
-                                recolector = normalillos[16];
-                                recolector.SetActive(false);
-
-                            }
+                            Debug.Log("2 Touch");
+                            //galleta = false;
 
 
                         }
-
-
                     }
+
+                    if (galleta == true)
+                    {
+                        Debug.Log("Booleana activada");
+                        edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
+                        TapCount -= 1;
+                        Debug.Log("Ahora TapCount vale:" + " " + TapCount);
+                        TapCount += 1;
+
+                        if (TapCount == 1)
+                        {
+                            Debug.Log("1 Touch");
+                            //La variable galleta pasa a ser true
+                            //galleta = true;
+                            //Debug.Log("La booleana es" + " " + galleta);
+                        }
+                        else if (TapCount == 2)
+                        {
+                            Debug.Log("2 Touch");
+                            //galleta = false;
+
+
+                        }
+                    }
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 }
-
-                //CÓDIGO PARA EL EDIFICIO MOSCÚ BLUE
-                if(hit.transform.name == "Moscú_blue")
-                {
-                    TapCount += 1;
-
-                    if (TapCount == 1)
-                    {
-                        Debug.Log("Has dado 1 touch");
-                    }
-                    else if(TapCount == 2)
-                    {
-                        Debug.Log("Has dado 2 touch");
-                        TapCount = 0;
-                        azulitos[57].SetActive(false);
-                        normalillos[16].tag = tagNameNormal;
-                        recolector.SetActive(true);
-                        recolector = null;
-                    }
-
-
-
-
-                }
-
-
-
-
 
 
 
@@ -617,9 +618,3 @@ public class Controller_edificios : MonoBehaviour
         }
     }
 }
-
-
-
-
-
-
