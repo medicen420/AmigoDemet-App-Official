@@ -430,8 +430,6 @@ public class Controller_edificios : MonoBehaviour
         edificio_newtag = GameObject.FindGameObjectWithTag(tagNew);
         edificio_blue = GameObject.FindGameObjectWithTag(tagNameBlue);
 
-
-
         //Estas líneas de código nos permiten detectar un touch sobre un objeto dentro de la escena
         if (Input.GetMouseButtonDown(0))
         {
@@ -591,6 +589,9 @@ public class Controller_edificios : MonoBehaviour
 
     }
 
+    //Declaramos el siguiente método declarado con un tipo de retorno IEnumerator y con una instrucción
+    //de retorno yield, este nos ayudará a determinar cuantos segundos va a pausar la iteracción que 
+    //empieza a correr cuando un touch ese detectado.
     private IEnumerator OneTouchError()
     {
         yield return new WaitForSeconds(0.5f);

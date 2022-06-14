@@ -10,11 +10,16 @@ public class ScrollAndPinch : MonoBehaviour
     protected Plane Plane;
 
     //***********************************************************
-    public float DecreaseCameraPanSpeed = 0.5f; //Default speed is 1
+    //public float DecreaseCameraPanSpeed = 0.5f; //Default speed is 1
 
-    //La velocidad la puedo modificar desde el Inspector
-    public float CameraUpperHeightBound; //Zoom out
-    public float CameraLowerHeightBound; //Zoom in
+    //Para delimitar el zoom in zoom out declaramos 2 variables de tipo float [Serializadas]
+
+    //Antes las variables estaban en Serializadas pero las convertimos en publicas para poder llamarlas
+    //desde el script que nos permite panear la cámara
+    /*[SerializeField]*/ public float CameraUpperHeightBound; //Zoom out
+    /*[SerializeField]*/ public float CameraLowerHeightBound; //Zoom in
+
+    
 
     private Vector3 cameraStartPosition;
     private void Awake()
@@ -28,11 +33,15 @@ public class ScrollAndPinch : MonoBehaviour
     private void Update()
     {
 
+
+
+
         //Update Plane
         if (Input.touchCount >= 1)
             Plane.SetNormalAndPosition(transform.up, transform.position);
 
-        var Delta1 = Vector3.zero;
+
+       /* var Delta1 = Vector3.zero;
         var Delta2 = Vector3.zero;
 
         //Scroll (Pan function)
@@ -42,7 +51,10 @@ public class ScrollAndPinch : MonoBehaviour
             Delta1 = PlanePositionDelta(Input.GetTouch(0)) / DecreaseCameraPanSpeed;
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 Camera.transform.Translate(Delta1, Space.World);
-        }
+
+
+
+        }*/
 
         //Pinch (Zoom Function)
         if (Input.touchCount >= 2)
@@ -64,6 +76,11 @@ public class ScrollAndPinch : MonoBehaviour
             Vector3 camPositionBeforeAdjustment = Camera.transform.position;
             Camera.transform.position = Vector3.LerpUnclamped(pos1, Camera.transform.position, 1 / zoom);
 
+
+
+
+
+            //*************************************************************************************************
             //Restricts zoom height 
 
             //Upper (ZoomOut)
@@ -78,6 +95,9 @@ public class ScrollAndPinch : MonoBehaviour
             }
 
 
+
+
+
             //Rotation Function
             if (Rotate && pos2b != pos2)
                 Camera.transform.RotateAround(pos1, Plane.normal, Vector3.SignedAngle(pos2 - pos1, pos2b - pos1b, Plane.normal));
@@ -85,6 +105,7 @@ public class ScrollAndPinch : MonoBehaviour
 
     }
 
+    
     //Returns the point between first and final finger position
     protected Vector3 PlanePositionDelta(Touch touch)
     {
