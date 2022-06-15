@@ -34,9 +34,9 @@ public class CameraPan : MonoBehaviour
             transform.Translate(-TouchDeltaPosition.x * Speed, -TouchDeltaPosition.y * Speed, 0);
 
                 transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, -64.7f, -2f),
+                Mathf.Clamp(transform.position.x, -64.7f, 26.2f),
                 Mathf.Clamp(transform.position.y, sc.CameraLowerHeightBound, sc.CameraUpperHeightBound),
-                Mathf.Clamp(transform.position.z, -72.86f, 12.6f));
+                Mathf.Clamp(transform.position.z, -72.86f, 28.9f));
 
 
         }
