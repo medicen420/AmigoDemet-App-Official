@@ -14,19 +14,44 @@ public class Keyboard : MonoBehaviour
     
 
     //Mandamos llamar a scripts externos a este código
-    public Controller_edificios cont_ed;
+    public SearchBar Searchb;
     //Declaramos una variable para nuestra Script de UI
     public UI User_i;
 
-    
+
+
+
+
+    //¡ES HORA DEL CINEMACHINE!
+
+    //Básicamente lo que haremos será crear virtual cameras con ayuda de CineMachine
+    //de igual forma para que estas cámaras funcionen tendremos que crear multiples TimeLines
+
+    //Primero vamos a mandar llamar a nuestros GameObjects que contienen nuestros TimeLines
+
+    //ESTAMBUL
+    public GameObject TimeL_Estambul;
+    //OSLO
+    /*public GameObject TimeL_Oslo;*/
+    //Por el momento este TimeLine contiene una cámara que redirige a nuestra cámara original
+    //hacia el edificio Estambul
+
+
 
 
     public void Start()
     {
-        cont_ed = FindObjectOfType<Controller_edificios>();
+        Searchb = FindObjectOfType<SearchBar>();
         User_i = FindObjectOfType<UI>();
-        
-       
+
+        //TimeLines de los edificios
+        //aparecen desactivadas al principio
+
+        //ESTAMBUL
+        TimeL_Estambul.SetActive(false);
+        //OSLO
+        /*TimeL_Oslo.SetActive(false);*/
+
 
     }
 
@@ -76,12 +101,14 @@ public class Keyboard : MonoBehaviour
             if ((Pseudo == "Estambul") || (Pseudo == "estambul") || (Pseudo == "Estambul ") || (Pseudo == "estambul ") ||
                 (Pseudo == "ESTAMBUL") || (Pseudo == "ESTAMBUL "))
             {
+                //TimeLine de nuestro edificio
+                TimeL_Estambul.SetActive(true);
                 //Está línea de código es para que vibre el celular cuando se seleccione el edificio 
                 //mediante el tipeo de su nombre
                 Handheld.Vibrate();
 
                 //SELECCIONAMOS NUESTRO EDIFICIO
-                cont_ed.EstambulOpen();
+                Searchb.EstambulOpen();
                 //EJECUTAMOS MÉTODO QUE SE ENCARGA DE LOS BOTONES EN LA UI
                 User_i.ResetButtons_1();
 
@@ -94,7 +121,7 @@ public class Keyboard : MonoBehaviour
                 //NOS METEMOS AL SCRIPT DE "Controller_edificios"
                 //vamos a declarar que el button azul corresponde a ejecutar 
                 //el método EstambulClose()
-                User_i.deselect.onClick.AddListener(cont_ed.EstambulClose);
+                User_i.deselect.onClick.AddListener(Searchb.EstambulClose);
 
 
                 //ESTO SEGUN YO SIRVE PARA QUE NO NOS GENERE CONFLICTO AL MOMENTO DE QUERER
@@ -112,11 +139,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MOSCÚ") || (Pseudo == "MOSCU") || (Pseudo == "MOSCÚ ") || (Pseudo == "MOSCU "))
             {
                 Handheld.Vibrate();
-                cont_ed.MoscúOpen();
+                Searchb.MoscúOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.MoscúClose);
+                User_i.deselect.onClick.AddListener(Searchb.MoscúClose);
                 Pseudo = Pseudo2;
             }
 
@@ -127,11 +154,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BERNA") || (Pseudo == "BERNA "))
             {
                 Handheld.Vibrate();
-                cont_ed.BernaOpen();
+                Searchb.BernaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BernaClose);
+                User_i.deselect.onClick.AddListener(Searchb.BernaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -142,11 +169,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ATENAS") || (Pseudo == "ATENAS "))
             {
                 Handheld.Vibrate();
-                cont_ed.AtenasOpen();
+                Searchb.AtenasOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.AtenasClose);
+                User_i.deselect.onClick.AddListener(Searchb.AtenasClose);
                 Pseudo = Pseudo2;
 
 
@@ -159,11 +186,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ARGEL") || (Pseudo == "ARGEL "))
             {
                 Handheld.Vibrate();
-                cont_ed.ArgelOpen();
+                Searchb.ArgelOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ArgelClose);
+                User_i.deselect.onClick.AddListener(Searchb.ArgelClose);
                 Pseudo = Pseudo2;
             }
 
@@ -174,11 +201,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "OSLO") || (Pseudo == "OSLO "))
             {
                 Handheld.Vibrate();
-                cont_ed.OsloOpen();
+                Searchb.OsloOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.OsloClose);
+                User_i.deselect.onClick.AddListener(Searchb.OsloClose);
                 Pseudo = Pseudo2;
             }
 
@@ -189,11 +216,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BULGARIA") || (Pseudo == "BULGARIA "))
             {
                 Handheld.Vibrate();
-                cont_ed.BulgariaOpen();
+                Searchb.BulgariaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BulgariaClose);
+                User_i.deselect.onClick.AddListener(Searchb.BulgariaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -204,11 +231,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BELGRADO") || (Pseudo == "BELGRADO "))
             {
                 Handheld.Vibrate();
-                cont_ed.BelgradoOpen();
+                Searchb.BelgradoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BelgradoClose);
+                User_i.deselect.onClick.AddListener(Searchb.BelgradoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -220,11 +247,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SEÚL") || (Pseudo == "SEÚL ") || (Pseudo == "SEUL") || (Pseudo == "SEUL "))
             {
                 Handheld.Vibrate();
-                cont_ed.SeúlOpen();
+                Searchb.SeúlOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SeúlClose);
+                User_i.deselect.onClick.AddListener(Searchb.SeúlClose);
                 Pseudo = Pseudo2;
             }
 
@@ -233,11 +260,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "DAMASCO") || (Pseudo == "DAMASCO "))
             {
                 Handheld.Vibrate();
-                cont_ed.DamascoOpen();
+                Searchb.DamascoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.DamascoClose);
+                User_i.deselect.onClick.AddListener(Searchb.DamascoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -248,11 +275,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "VARSOVIA") || (Pseudo == "VARSOVIA "))
             {
                 Handheld.Vibrate();
-                cont_ed.VarsoviaOpen();
+                Searchb.VarsoviaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.VarsoviaClose);
+                User_i.deselect.onClick.AddListener(Searchb.VarsoviaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -263,11 +290,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ESTOCOLMO") || (Pseudo == "ESTOCOLMO "))
             {
                 Handheld.Vibrate();
-                cont_ed.EstocolmoOpen();
+                Searchb.EstocolmoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.EstocolmoClose);
+                User_i.deselect.onClick.AddListener(Searchb.EstocolmoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -279,11 +306,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "PARÍS") || (Pseudo == "PARÍS ") || (Pseudo == "PARIS") || (Pseudo == "PARIS "))
             {
                 Handheld.Vibrate();
-                cont_ed.ParísOpen();
+                Searchb.ParísOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ParísClose);
+                User_i.deselect.onClick.AddListener(Searchb.ParísClose);
                 Pseudo = Pseudo2;
             }
 
@@ -294,11 +321,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MADRID") || (Pseudo == "MADRID "))
             {
                 Handheld.Vibrate();
-                cont_ed.MadridOpen();
+                Searchb.MadridOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.MadridClose);
+                User_i.deselect.onClick.AddListener(Searchb.MadridClose);
                 Pseudo = Pseudo2;
             }
 
@@ -309,11 +336,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "LISBOA") || (Pseudo == "LISBOA "))
             {
                 Handheld.Vibrate();
-                cont_ed.LisboaOpen();
+                Searchb.LisboaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.LisboaClose);
+                User_i.deselect.onClick.AddListener(Searchb.LisboaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -324,11 +351,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ROMA") || (Pseudo == "ROMA "))
             {
                 Handheld.Vibrate();
-                cont_ed.RomaOpen();
+                Searchb.RomaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.RomaClose);
+                User_i.deselect.onClick.AddListener(Searchb.RomaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -339,11 +366,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BRUSELAS") || (Pseudo == "BRUSELAS "))
             {
                 Handheld.Vibrate();
-                cont_ed.BruselasOpen();
+                Searchb.BruselasOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BruselasClose);
+                User_i.deselect.onClick.AddListener(Searchb.BruselasClose);
                 Pseudo = Pseudo2;
             }
 
@@ -355,11 +382,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "LONDRES") || (Pseudo == "LONDRES "))
             {
                 Handheld.Vibrate();
-                cont_ed.LondresOpen();
+                Searchb.LondresOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.LondresClose);
+                User_i.deselect.onClick.AddListener(Searchb.LondresClose);
                 Pseudo = Pseudo2;
             }
 
@@ -371,11 +398,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ZURICH") || (Pseudo == "ZURICH "))
             {
                 Handheld.Vibrate();
-                cont_ed.ZurichOpen();
+                Searchb.ZurichOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ZurichClose);
+                User_i.deselect.onClick.AddListener(Searchb.ZurichClose);
                 Pseudo = Pseudo2;
             }
 
@@ -388,11 +415,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BERLÍN") || (Pseudo == "BERLÍN ") || (Pseudo == "BERLIN") || (Pseudo == "BERLIN "))
             {
                 Handheld.Vibrate();
-                cont_ed.BerlínOpen();
+                Searchb.BerlínOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BerlínClose);
+                User_i.deselect.onClick.AddListener(Searchb.BerlínClose);
                 Pseudo = Pseudo2;
             }
 
@@ -403,11 +430,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "VIENA") || (Pseudo == "VIENA "))
             {
                 Handheld.Vibrate();
-                cont_ed.VienaOpen();
+                Searchb.VienaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.VienaClose);
+                User_i.deselect.onClick.AddListener(Searchb.VienaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -418,11 +445,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "PRAGA") || (Pseudo == "PRAGA "))
             {
                 Handheld.Vibrate();
-                cont_ed.PragaOpen();
+                Searchb.PragaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.PragaClose);
+                User_i.deselect.onClick.AddListener(Searchb.PragaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -433,11 +460,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "YAKARTA") || (Pseudo == "YAKARTA "))
             {
                 Handheld.Vibrate();
-                cont_ed.YakartaOpen();
+                Searchb.YakartaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.YakartaClose);
+                User_i.deselect.onClick.AddListener(Searchb.YakartaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -450,11 +477,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MÓNACO") || (Pseudo == "MÓNACO ") || (Pseudo == "MONACO") || (Pseudo == "MONACO "))
             {
                 Handheld.Vibrate();
-                cont_ed.MónacoOpen();
+                Searchb.MónacoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.MónacoClose);
+                User_i.deselect.onClick.AddListener(Searchb.MónacoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -465,11 +492,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MANILA") || (Pseudo == "MANILA "))
             {
                 Handheld.Vibrate();
-                cont_ed.ManilaOpen();
+                Searchb.ManilaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ManilaClose);
+                User_i.deselect.onClick.AddListener(Searchb.ManilaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -490,11 +517,11 @@ public class Keyboard : MonoBehaviour
             {
 
                 Handheld.Vibrate();
-                cont_ed.NuevaDelhiOpen();
+                Searchb.NuevaDelhiOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.NuevaDelhiClose);
+                User_i.deselect.onClick.AddListener(Searchb.NuevaDelhiClose);
                 Pseudo = Pseudo2;
 
             }
@@ -508,11 +535,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MÉXICO") || (Pseudo == "MÉXICO ") || (Pseudo == "MEXICO") || (Pseudo == "MEXICO "))
             {
                 Handheld.Vibrate();
-                cont_ed.MéxicoOpen();
+                Searchb.MéxicoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.MéxicoClose);
+                User_i.deselect.onClick.AddListener(Searchb.MéxicoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -532,11 +559,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TEHERÁN") || (Pseudo == "TEHERÁN ") || (Pseudo == "TEHERAN") || (Pseudo == "TEHERAN "))
             {
                 Handheld.Vibrate();
-                cont_ed.TeheránOpen();
+                Searchb.TeheránOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TeheránClose);
+                User_i.deselect.onClick.AddListener(Searchb.TeheránClose);
                 Pseudo = Pseudo2;
             }
 
@@ -549,11 +576,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "PEKÍN") || (Pseudo == "PEKÍN ") || (Pseudo == "PEKIN") || (Pseudo == "PEKIN "))    
             {
                 Handheld.Vibrate();
-                cont_ed.PekínOpen();
+                Searchb.PekínOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.PekínClose);
+                User_i.deselect.onClick.AddListener(Searchb.PekínClose);
                 Pseudo = Pseudo2;
             }
 
@@ -564,11 +591,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BUCAREST") || (Pseudo == "BUCAREST "))
             {
                 Handheld.Vibrate();
-                cont_ed.BucarestOpen();
+                Searchb.BucarestOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BucarestClose);
+                User_i.deselect.onClick.AddListener(Searchb.BucarestClose);
                 Pseudo = Pseudo2;
             }
 
@@ -582,11 +609,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "COPENAGE") || (Pseudo == "COPENAGE "))
             {
                 Handheld.Vibrate();
-                cont_ed.CopennagueOpen();
+                Searchb.CopennagueOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.CopennagueClose);
+                User_i.deselect.onClick.AddListener(Searchb.CopennagueClose);
                 Pseudo = Pseudo2;
 
             }
@@ -598,11 +625,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "AMSTERDAM") || (Pseudo == "AMSTERDAM "))
             {
                 Handheld.Vibrate();
-                cont_ed.AmsterdamOpen();
+                Searchb.AmsterdamOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.AmsterdamClose);
+                User_i.deselect.onClick.AddListener(Searchb.AmsterdamClose);
                 Pseudo = Pseudo2;
             }
 
@@ -614,11 +641,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SAIGÓN") || (Pseudo == "SAIGÓN ") || (Pseudo == "SAIGON") || (Pseudo == "SAIGON "))
             {
                 Handheld.Vibrate();
-                cont_ed.SaigónOpen();
+                Searchb.SaigónOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SaigónClose);
+                User_i.deselect.onClick.AddListener(Searchb.SaigónClose);
                 Pseudo = Pseudo2;
             }
 
@@ -631,11 +658,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TAIPÉI") || (Pseudo == "TAIPÉI ") || (Pseudo == "TAIPEI") || (Pseudo == "TAIPEI "))
             {
                 Handheld.Vibrate();
-                cont_ed.TaipéiOpen();
+                Searchb.TaipéiOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TaipéiClose);
+                User_i.deselect.onClick.AddListener(Searchb.TaipéiClose);
                 Pseudo = Pseudo2;
             }
 
@@ -646,11 +673,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TOKIO") || (Pseudo == "TOKIO "))
             {
                 Handheld.Vibrate();
-                cont_ed.TokioOpen();
+                Searchb.TokioOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TokioClose);
+                User_i.deselect.onClick.AddListener(Searchb.TokioClose);
                 Pseudo = Pseudo2;
             }
 
@@ -663,11 +690,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SAN JUAN") || (Pseudo == "SAN JUAN ") || (Pseudo == "SANJUAN") || (Pseudo == "SANJUAN "))
             {
                 Handheld.Vibrate();
-                cont_ed.SanJuanOpen();
+                Searchb.SanJuanOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SanJuanClose);
+                User_i.deselect.onClick.AddListener(Searchb.SanJuanClose);
                 Pseudo = Pseudo2;
             }
 
@@ -678,11 +705,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "KINGSTON") || (Pseudo == "KINGSTON "))
             {
                 Handheld.Vibrate();
-                cont_ed.KingstonOpen();
+                Searchb.KingstonOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.KingstonClose);
+                User_i.deselect.onClick.AddListener(Searchb.KingstonClose);
                 Pseudo = Pseudo2;
             }
 
@@ -693,11 +720,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "HABANA") || (Pseudo == "HABANA "))
             {
                 Handheld.Vibrate();
-                cont_ed.HabanaOpen();
+                Searchb.HabanaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.HabanaClose);
+                User_i.deselect.onClick.AddListener(Searchb.HabanaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -712,11 +739,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SAN JOSE") || (Pseudo == "SAN JOSE "))
             {
                 Handheld.Vibrate();
-                cont_ed.SanJoséOpen();
+                Searchb.SanJoséOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SanJoséClose);
+                User_i.deselect.onClick.AddListener(Searchb.SanJoséClose);
                 Pseudo = Pseudo2;
             }
 
@@ -729,11 +756,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "PANAMÁ") || (Pseudo == "PANAMÁ ") || (Pseudo == "PANAMA") || (Pseudo == "PANAMA "))
             {
                 Handheld.Vibrate();
-                cont_ed.SaigónOpen();
+                Searchb.SaigónOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SaigónClose);
+                User_i.deselect.onClick.AddListener(Searchb.SaigónClose);
                 Pseudo = Pseudo2;
             }
 
@@ -744,11 +771,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MANAGUA") || (Pseudo == "MANAGUA "))
             {
                 Handheld.Vibrate();
-                cont_ed.ManaguaOpen();
+                Searchb.ManaguaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ManaguaClose);
+                User_i.deselect.onClick.AddListener(Searchb.ManaguaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -759,11 +786,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TEGUCIGALPA") || (Pseudo == "TEGUCIGALPA "))
             {
                 Handheld.Vibrate();
-                cont_ed.TegucigalpaOpen();
+                Searchb.TegucigalpaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TegucigalpaClose);
+                User_i.deselect.onClick.AddListener(Searchb.TegucigalpaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -776,11 +803,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "NUEVAYORK") || (Pseudo == "NUEVAYORK ") || (Pseudo == "NUEVA YORK") || (Pseudo == "NUEVA YORK "))
             {
                 Handheld.Vibrate();
-                cont_ed.NuevaYorkOpen();
+                Searchb.NuevaYorkOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.NuevaYorkClose);
+                User_i.deselect.onClick.AddListener(Searchb.NuevaYorkClose);
                 Pseudo = Pseudo2;
             }
 
@@ -793,11 +820,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BUENOSAIRES") || (Pseudo == "BUENOSAIRES ") || (Pseudo == "BUENOS AIRES") || (Pseudo == "BUENOS AIRES "))
             {
                 Handheld.Vibrate();
-                cont_ed.BuenosAiresOpen();
+                Searchb.BuenosAiresOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BuenosAiresClose);
+                User_i.deselect.onClick.AddListener(Searchb.BuenosAiresClose);
                 Pseudo = Pseudo2;
             }
 
@@ -809,11 +836,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "OTAWA") || (Pseudo == "OTAWA ") || (Pseudo == "OTAGUA") || (Pseudo == "OTAGUA "))
             {
                 Handheld.Vibrate();
-                cont_ed.OtawaOpen();
+                Searchb.OtawaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.OtawaClose);
+                User_i.deselect.onClick.AddListener(Searchb.OtawaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -826,11 +853,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "EL CAIRO") || (Pseudo == "EL CAIRO ") || (Pseudo == "CAIRO") || (Pseudo == "CAIRO "))
             {
                 Handheld.Vibrate();
-                cont_ed.ElCairoOpen();
+                Searchb.ElCairoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ElCairoClose);
+                User_i.deselect.onClick.AddListener(Searchb.ElCairoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -842,11 +869,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TORONTO") || (Pseudo == "TORONTO "))
             {
                 Handheld.Vibrate();
-                cont_ed.TorontoOpen();
+                Searchb.TorontoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TorontoClose);
+                User_i.deselect.onClick.AddListener(Searchb.TorontoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -859,11 +886,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TRÍPOLI") || (Pseudo == "TRÍPOLI ") || (Pseudo == "TRIPOLI") || (Pseudo == "TRIPOLI "))
             {
                 Handheld.Vibrate();
-                cont_ed.TrípoliOpen();
+                Searchb.TrípoliOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TrípoliClose);
+                User_i.deselect.onClick.AddListener(Searchb.TrípoliClose);
                 Pseudo = Pseudo2;
             }
 
@@ -877,11 +904,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MONTEVIDEO") || (Pseudo == "MONTEVIDEO ") || (Pseudo == "MONTE VIDEO") || (Pseudo == "MONTE VIDEO "))
             {
                 Handheld.Vibrate();
-                cont_ed.MonteVideoOpen();
+                Searchb.MonteVideoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.MonteVideoClose);
+                User_i.deselect.onClick.AddListener(Searchb.MonteVideoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -892,11 +919,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "LUANDA") || (Pseudo == "LUANDA "))
             {
                 Handheld.Vibrate();
-                cont_ed.LuandaOpen();
+                Searchb.LuandaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.LuandaClose);
+                User_i.deselect.onClick.AddListener(Searchb.LuandaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -908,11 +935,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SANTIAGO") || (Pseudo == "SANTIAGO "))
             {
                 Handheld.Vibrate();
-                cont_ed.SantiagoOpen();
+                Searchb.SantiagoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SantiagoClose);
+                User_i.deselect.onClick.AddListener(Searchb.SantiagoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -924,11 +951,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ASUNCIÓN") || (Pseudo == "ASUNCIÓN ") || (Pseudo == "ASUNCION") || (Pseudo == "ASUNCION "))
             {
                 Handheld.Vibrate();
-                cont_ed.AsunciónOpen();
+                Searchb.AsunciónOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.AsunciónClose);
+                User_i.deselect.onClick.AddListener(Searchb.AsunciónClose);
                 Pseudo = Pseudo2;
             }
 
@@ -941,11 +968,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SANSALVADOR") || (Pseudo == "SANSALVADOR ") || (Pseudo == "SAN SALVADOR") || (Pseudo == "SAN SALVADOR "))
             {
                 Handheld.Vibrate();
-                cont_ed.SanSalvadorOpen();
+                Searchb.SanSalvadorOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SanSalvadorClose);
+                User_i.deselect.onClick.AddListener(Searchb.SanSalvadorClose);
                 Pseudo = Pseudo2;
             }
 
@@ -957,11 +984,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BOGOTÁ") || (Pseudo == "BOGOTÁ ") || (Pseudo == "BOGOTA") || (Pseudo == "BOGOTA "))
             {
                 Handheld.Vibrate();
-                cont_ed.BogotáOpen();
+                Searchb.BogotáOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BogotáClose);
+                User_i.deselect.onClick.AddListener(Searchb.BogotáClose);
                 Pseudo = Pseudo2;
             }
 
@@ -972,11 +999,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "CARACAS") || (Pseudo == "CARACAS "))
             {
                 Handheld.Vibrate();
-                cont_ed.CaracasOpen();
+                Searchb.CaracasOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.CaracasClose);
+                User_i.deselect.onClick.AddListener(Searchb.CaracasClose);
                 Pseudo = Pseudo2;
             }
 
@@ -989,11 +1016,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SANTODOMINGO") || (Pseudo == "SANTODOMINGO ") || (Pseudo == "SANTO DOMINGO") || (Pseudo == "SANTO DOMINGO "))
             {
                 Handheld.Vibrate();
-                cont_ed.SantoDomingoOpen();
+                Searchb.SantoDomingoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SantoDomingoClose);
+                User_i.deselect.onClick.AddListener(Searchb.SantoDomingoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1004,11 +1031,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "QUITO") || (Pseudo == "QUITO "))
             {
                 Handheld.Vibrate();
-                cont_ed.QuitoOpen();
+                Searchb.QuitoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.QuitoClose);
+                User_i.deselect.onClick.AddListener(Searchb.QuitoClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1019,11 +1046,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "MINESOTA") || (Pseudo == "MINESOTA "))
             {
                 Handheld.Vibrate();
-                cont_ed.MinesotaOpen();
+                Searchb.MinesotaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.MinesotaClose);
+                User_i.deselect.onClick.AddListener(Searchb.MinesotaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1034,11 +1061,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SIRIA") || (Pseudo == "SIRIA "))
             {
                 Handheld.Vibrate();
-                cont_ed.SiriaOpen();
+                Searchb.SiriaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SiriaClose);
+                User_i.deselect.onClick.AddListener(Searchb.SiriaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1051,11 +1078,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SOFÍA") || (Pseudo == "SOFÍA ") || (Pseudo == "SOFIA") || (Pseudo == "SOFIA "))
             {
                 Handheld.Vibrate();
-                cont_ed.SofíaOpen();
+                Searchb.SofíaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SofíaClose);
+                User_i.deselect.onClick.AddListener(Searchb.SofíaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1068,11 +1095,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "EL CABO") || (Pseudo == "EL CABO ") || (Pseudo == "CABO") || (Pseudo == "CABO "))
             {
                 Handheld.Vibrate();
-                cont_ed.ElCaboOpen();
+                Searchb.ElCaboOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.ElCaboClose);
+                User_i.deselect.onClick.AddListener(Searchb.ElCaboClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1083,11 +1110,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ANKARA") || (Pseudo == "ANKARA "))
             {
                 Handheld.Vibrate();
-                cont_ed.AnkaraOpen();
+                Searchb.AnkaraOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.AnkaraClose);
+                User_i.deselect.onClick.AddListener(Searchb.AnkaraClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1099,11 +1126,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "TÚNEZ") || (Pseudo == "TÚNEZ ") || (Pseudo == "TUNEZ") || (Pseudo == "TUNEZ "))
             {
                 Handheld.Vibrate();
-                cont_ed.TúnezOpen();
+                Searchb.TúnezOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.TúnezClose);
+                User_i.deselect.onClick.AddListener(Searchb.TúnezClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1114,11 +1141,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "SINGAPUR") || (Pseudo == "SINGAPUR "))
             {
                 Handheld.Vibrate();
-                cont_ed.SingapurOpen();
+                Searchb.SingapurOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.SingapurClose);
+                User_i.deselect.onClick.AddListener(Searchb.SingapurClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1129,11 +1156,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "ESLOVAQUIA") || (Pseudo == "ESLOVAQUIA "))
             {
                 Handheld.Vibrate();
-                cont_ed.EslovaquiaOpen();
+                Searchb.EslovaquiaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.EslovaquiaClose);
+                User_i.deselect.onClick.AddListener(Searchb.EslovaquiaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1145,11 +1172,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "HONOLULU") || (Pseudo == "HONOLULU ") || (Pseudo == "ONOLULU") || (Pseudo == "ONOLULU "))
             {
                 Handheld.Vibrate();
-                cont_ed.HonoluluOpen();
+                Searchb.HonoluluOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.HonoluluClose);
+                User_i.deselect.onClick.AddListener(Searchb.HonoluluClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1162,11 +1189,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "CANBERRA") || (Pseudo == "CANBERRA ") || (Pseudo == "CANBERA") || (Pseudo == "CANBERA "))
             {
                 Handheld.Vibrate();
-                cont_ed.CanberraOpen();
+                Searchb.CanberraOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.CanberraClose);
+                User_i.deselect.onClick.AddListener(Searchb.CanberraClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1178,11 +1205,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "BRASILIA") || (Pseudo == "BRASILIA "))
             {
                 Handheld.Vibrate();
-                cont_ed.BrasiliaOpen();
+                Searchb.BrasiliaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.BrasiliaClose);
+                User_i.deselect.onClick.AddListener(Searchb.BrasiliaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1193,11 +1220,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "YOKOHAMA") || (Pseudo == "YOKOHAMA "))
             {
                 Handheld.Vibrate();
-                cont_ed.YokohamaOpen();
+                Searchb.YokohamaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.YokohamaClose);
+                User_i.deselect.onClick.AddListener(Searchb.YokohamaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1209,11 +1236,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "GUATEMALA") || (Pseudo == "GUATEMALA "))
             {
                 Handheld.Vibrate();
-                cont_ed.GuatemalaOpen();
+                Searchb.GuatemalaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.GuatemalaClose);
+                User_i.deselect.onClick.AddListener(Searchb.GuatemalaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1224,11 +1251,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "WASHINGTON") || (Pseudo == "WASHINGTON "))
             {
                 Handheld.Vibrate();
-                cont_ed.WashingtonOpen();
+                Searchb.WashingtonOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.WashingtonClose);
+                User_i.deselect.onClick.AddListener(Searchb.WashingtonClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1244,11 +1271,11 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "DAKKA") || (Pseudo == "DAKKA ") || (Pseudo == "DAKA") || (Pseudo == "DAKA "))
             {
                 Handheld.Vibrate();
-                cont_ed.DaccaOpen();
+                Searchb.DaccaOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.DaccaClose);
+                User_i.deselect.onClick.AddListener(Searchb.DaccaClose);
                 Pseudo = Pseudo2;
             }
 
@@ -1261,57 +1288,14 @@ public class Keyboard : MonoBehaviour
                 (Pseudo == "HAMBURGO") || (Pseudo == "HAMBURGO ") || (Pseudo == "AMBURGO") || (Pseudo == "AMBURGO "))
             {
                 Handheld.Vibrate();
-                cont_ed.HamburgoOpen();
+                Searchb.HamburgoOpen();
                 User_i.ResetButtons_1();
 
                 User_i.Inputfield.SetActive(false);
-                User_i.deselect.onClick.AddListener(cont_ed.HamburgoClose);
+                User_i.deselect.onClick.AddListener(Searchb.HamburgoClose);
                 Pseudo = Pseudo2;
             }
             //**************************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             //SI EL USUARIO NO TIPEA NADA
