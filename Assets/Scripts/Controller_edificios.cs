@@ -25,7 +25,7 @@ public class Controller_edificios : MonoBehaviour
     //Variable de tipo float que será la que almacene el tiempo pausado después de una iteracción
     [SerializeField] float Timewait;
 
-    UI user;
+    //UI user;
 
 
     //[SerializeField] GameObject moscú_normal;
@@ -441,7 +441,7 @@ public class Controller_edificios : MonoBehaviour
                         print("<color=red> Has dado: " + " " + TapCount + " " + "touch </color>");
                         StopCoroutine("OneTouchError");
                         TapCount = 0;
-                        Handheld.Vibrate();
+                        
 
                         //***************************************************
                         //Código para cuando no haya un edificio seleccionado
@@ -7948,12 +7948,6 @@ public class Controller_edificios : MonoBehaviour
 
 
 
-
-
-
-
-
-
     //*************************************************************
     //MÉTODOS PARA LA SEARCHBAR
 
@@ -7970,7 +7964,6 @@ public class Controller_edificios : MonoBehaviour
     public void EstambulOpen()
     {
 
-        
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
         {
@@ -8002,32 +7995,20 @@ public class Controller_edificios : MonoBehaviour
 
         }
 
-
     }
     //-------------------------------------------------------------------
 
-
     public void EstambulClose()
     {
-        
-        
         azulitos[3].SetActive(false);
         normalillos[41].tag = tagNameNormal;
         recolector.SetActive(true);
         recolector = null;
         TapCount = 0;
-
-        //CREO QUE CON ESTE COMPORTAMIENTO SE RETIRA EL LISTENER ASIGANDO AL BUTTON BLUE
         ux.ResetButtons_Estambul();
-
-        user.Inputfield.SetActive(true);
-
-     
-
     }
-    //-------------------------------------------------------------------------
+    //*******************************************************************************
 
- 
 
 
     //********************************************************************
@@ -8067,28 +8048,18 @@ public class Controller_edificios : MonoBehaviour
 
         }
     }
+    //----------------------------------------------------------------------------------
 
     public void MoscúClose()
     {
-        
         azulitos[57].SetActive(false);
         normalillos[16].tag = tagNameNormal;
         recolector.SetActive(true);
         recolector = null;
         TapCount = 0;
-
         ux.ResetButtons_Moscú();
-        //ACTIVAMOS NUESTRA SEARCH BAR POR EL MOMENTO
-        user.Inputfield.SetActive(true);
-        
-        
-
-        
     }
-    //---------------------------------------------------------------
-
-
-   
+    //***********************************************************************************
 
 
 
@@ -8099,16 +8070,11 @@ public class Controller_edificios : MonoBehaviour
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
         {
-
-
             azulitos[24].SetActive(true);
             normalillos[66].tag = tagNew;
             recolector = normalillos[66];
             recolector.SetActive(false);
         }
-
-
-
 
         //SI HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == true)
@@ -8140,35 +8106,15 @@ public class Controller_edificios : MonoBehaviour
         recolector = null;
         TapCount = 0;
         ux.ResetButtons_Berna();
-        user.Inputfield.SetActive(true);
     }
-    //-----------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //****************************************************************************
 
 
 
 
     //***********************************************************************
     //EDIFICIO ATENAS
-
-    public void Atenas()
+    public void AtenasOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8178,8 +8124,6 @@ public class Controller_edificios : MonoBehaviour
             recolector = normalillos[36];
             recolector.SetActive(false);
         }
-
-
 
         //SI HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == true)
@@ -8199,16 +8143,25 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------
 
+    public void AtenasClose()
+    {
+        azulitos[30].SetActive(false);
+        normalillos[36].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Atenas();
+    }
+    //*************************************************************************************
 
 
 
 
     //****************************************************************************
     //EDIFICIO ARGEL
-
-    public void Argel()
+    public void ArgelOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8240,13 +8193,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //--------------------------------------------------------------------------------
 
+    public void ArgelClose()
+    {
+        azulitos[68].SetActive(false);
+        normalillos[53].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Argel();
+    }
+    //*****************************************************************************
 
 
 
-    //*******************************************************************************
+    //****************************************************************************
     //EDIFICIO OSLO
-
-    public void Oslo()
+    public void OsloOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8277,14 +8239,22 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //-----------------------------------------------------------------------------------
 
+    public void OsloClose()
+    {
+        azulitos[53].SetActive(false);
+        normalillos[64].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Oslo();
+    }
+    //**********************************************************************************
 
 
     //***********************************************************************************
     //EDIFICIO BULGARIA
-
-    public void Bulgaria()
+    public void BulgariaOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -8319,14 +8289,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------
 
-
+    public void BulgariaClose()
+    {
+        azulitos[55].SetActive(false);
+        normalillos[18].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Bulgaria();
+    }
+    //**************************************************************************************
 
 
 
     //*************************************************************************************
     //EDIFICIO BELGRADO
-
-    public void Belgrado()
+    public void BelgradoOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8360,14 +8338,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------
 
+    public void BelgradoClose()
+    {
+        azulitos[40].SetActive(false);
+        normalillos[47].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Belgrado();
+    }
+    //******************************************************************************************
 
-
-
+    
 
     //******************************************************************************************
     //EDIFICIO SEÚL 
-
-    public void Seúl()
+    public void SeúlOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -8400,14 +8386,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------
 
+    public void SeúlClose()
+    {
+        azulitos[69].SetActive(false);
+        normalillos[56].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Seúl();
+    }
+    //******************************************************************************************
 
 
 
 
     //******************************************************************************************
     //EDIFICIO DAMASCO
-
-    public void Damasco()
+    public void DamascoOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -8441,13 +8436,22 @@ public class Controller_edificios : MonoBehaviour
         }
     }
     //--------------------------------------------------------------------------------------------
+    public void DamascoClose()
+    {
+        azulitos[47].SetActive(false);
+        normalillos[14].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Damasco();
+    }
+    //*********************************************************************************************
 
 
 
     //*********************************************************************************************
     //EDIFICIO VARSOVIA
-
-    public void Varsovia()
+    public void VarsoviaOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -8481,12 +8485,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------------
 
+    public void VarsoviaClose()
+    {
+        azulitos[20].SetActive(false);
+        normalillos[19].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Varsovia();
+    }
+    //************************************************************************************************
+
+
 
 
     //************************************************************************************************
     //EDIFICIO ESTOCOLMO
-
-    public void Estocolmo()
+    public void EstocolmoOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8517,16 +8532,24 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //--------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------
 
-
-
+    public void EstocolmoClose()
+    {
+        azulitos[27].SetActive(false);
+        normalillos[2].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Estocolmo();
+    }
+    //**********************************************************************************************
 
 
     //*********************************************************************************************
     //EDIFICIO PARÍS
 
-    public void París()
+    public void ParísOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8559,13 +8582,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------
 
-
-
+    public void ParísClose()
+    {
+        azulitos[56].SetActive(false);
+        normalillos[10].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_París();
+    }
+    //********************************************************************************************
 
     //**********************************************************************************************
     //EDIFICIO MADRID
 
-    public void Madrid()
+    public void MadridOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8598,13 +8629,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------------
 
+    public void MadridClose()
+    {
+        azulitos[50].SetActive(false);
+        normalillos[6].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Madrid();
+    }
+    //***********************************************************************************************
 
 
 
 
     //************************************************************************************************
     //EDIFICIO LISBOA
-    public void Lisboa()
+    public void LisboaOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -8638,13 +8679,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------
 
-
+    public void LisboaClose()
+    {
+        azulitos[16].SetActive(false);
+        normalillos[15].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Lisboa();
+    }
+    //*************************************************************************************************
 
 
     //************************************************************************************************
     //EDIFICIO ROMA
 
-    public void Roma()
+    public void RomaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8677,13 +8727,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------
 
+    public void RomaClose()
+    {
+        azulitos[35].SetActive(false);
+        normalillos[24].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        ux.ResetButtons_Roma();
+    }
+    //***********************************************************************************************
 
 
 
     //***********************************************************************************************
     //EDIFICIO BRUSELAS
 
-    public void Bruselas()
+    public void BruselasOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8717,13 +8776,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------
 
+    public void BruselasClose()
+    {
+        azulitos[49].SetActive(false);
+        normalillos[25].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Bruselas();
+    }
+    //**************************************************************************************************
 
 
 
     //*************************************************************************************************
     //EDIFICIO LONDRES
 
-    public void Londres()
+    public void LondresOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8756,6 +8825,16 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------
 
+    public void LondresClose()
+    {
+        azulitos[39].SetActive(false);
+        normalillos[42].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Londres();
+    }
+    //****************************************************************************************************
 
 
 
@@ -8763,7 +8842,7 @@ public class Controller_edificios : MonoBehaviour
     //**************************************************************************************************
     //EDIFICIO ZURICH
 
-    public void Zurich()
+    public void ZurichOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8796,13 +8875,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //--------------------------------------------------------------------------------------------------
 
+    public void ZurichClose()
+    {
+        azulitos[70].SetActive(false);
+        normalillos[72].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Zurich();
+    }
+    //****************************************************************************************************
 
 
 
     //***************************************************************************************************
     //EDIFICIO BERLÍN
 
-    public void Berlín()
+    public void BerlínOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8834,12 +8923,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------
 
+    public void BerlínClose()
+    {
+        azulitos[61].SetActive(false);
+        normalillos[62].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+    }
 
 
     //**************************************************************************************************
     //EDIFICIO VIENA
 
-    public void Viena()
+    public void VienaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8872,11 +8969,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------------
 
+    public void VienaClose()
+    {
+        azulitos[13].SetActive(false);
+        normalillos[70].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Viena();
+    }
+    //***********************************************************************************************
+
+
 
     //************************************************************************************************
     //EDIFICIO PRAGA
 
-    public void Praga()
+    public void PragaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8909,13 +9018,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------
 
+    public void PragaClose()
+    {
+        azulitos[29].SetActive(false);
+        normalillos[69].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Praga();
+    }
+    //**************************************************************************************************
 
 
 
     //*************************************************************************************************
     //EDIFICIO YAKARTA
 
-    public void Yakarta()
+    public void YakartaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8948,13 +9067,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------
 
+    public void YakartaClose()
+    {
+        azulitos[38].SetActive(false);
+        normalillos[21].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Yakarta();
+    }
+    //***********************************************************************************************
 
 
 
 
     //**********************************************************************************************
     //EDIFICIO MÓNACO
-    public void Mónaco()
+    public void MónacoOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -8987,13 +9116,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------
 
+    public void MónacoClose()
+    {
+        azulitos[25].SetActive(false);
+        normalillos[29].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Mónaco();
+    }
+    //*************************************************************************************************
 
 
     //**************************************************************************************************
     //EDIFICIO MANILA
 
 
-    public void Manila()
+    public void ManilaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9027,14 +9166,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------
 
-
+    public void ManilaClose()
+    {
+        azulitos[73].SetActive(false);
+        normalillos[63].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Manila();
+    }
+    //*************************************************************************************************
 
 
 
     //**************************************************************************************************
     //EDIFICIO NUEVA DELHI
 
-    public void NuevaDelhi()
+    public void NuevaDelhiOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9066,14 +9214,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------------
 
-
+    public void NuevaDelhiClose()
+    {
+        azulitos[1].SetActive(false);
+        normalillos[71].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_NuevaDelhi();
+    }
 
 
 
     //*****************************************************************************************************
     //EDIFICIO MÉXICO
 
-    public void México()
+    public void MéxicoOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9106,12 +9262,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------------------
 
+    public void MéxicoClose()
+    {
+        azulitos[19].SetActive(false);
+        normalillos[20].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_México();
+    }
 
     //****************************************************************************************************
     //EDIFICIO TEHERÁN
 
 
-    public void Teherán()
+    public void TeheránOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9146,10 +9311,21 @@ public class Controller_edificios : MonoBehaviour
     //-----------------------------------------------------------------------------------------------------
 
 
+    public void TeheránClose()
+    {
+        azulitos[59].SetActive(false);
+        normalillos[40].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Teherán();
+    }
+
+
     //******************************************************************************************************
     //EDIFICIO BOMBAY
 
-    public void Bombay()
+    public void BombayOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9183,11 +9359,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------
 
+    public void BombayClose()
+    {
+        azulitos[45].SetActive(false);
+        normalillos[11].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Bombay();
+    }
 
     //******************************************************************************************************
     //EDIFICIO PEKIN
 
-    public void Pekin()
+    public void PekínOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9220,12 +9405,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //---------------------------------------------------------------------------------------------------------
 
+    public void PekínClose()
+    {
+        azulitos[2].SetActive(false);
+        normalillos[0].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Pekín();
+    }
+    //*********************************************************************************************************
 
 
 
     //*********************************************************************************************************
     //EDIFICIO BUCAREST
-    public void Bucarest()
+    public void BucarestOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9257,11 +9452,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------------------
 
+    public void BucarestClose()
+    {
+        azulitos[15].SetActive(false);
+        normalillos[13].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Bucarest();
+    }
+
 
     //************************************************************************************************************
     //EDIFICIO COPENNAGUE
-
-    public void Copennague()
+    public void CopennagueOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9293,11 +9497,21 @@ public class Controller_edificios : MonoBehaviour
         }
     }
     //-----------------------------------------------------------------------------------------------------------------
+    public void CopennagueClose()
+    {
+        azulitos[5].SetActive(false);
+        normalillos[4].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Copennague();
+    }
+
 
     //*****************************************************************************************************************
     //EDIFICIO AMSTERDAM
 
-    public void Amsterdam()
+    public void AmsterdamOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9330,10 +9544,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------------------------------
 
+    public void AmsterdamClose()
+    {
+        azulitos[7].SetActive(false);
+        normalillos[12].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Amsterdam();
+    }
+    //****************************************************************************************************************
+
+
+
     //*****************************************************************************************************************
     //EDIFICIO SAIGON
-
-    public void Saigon()
+    public void SaigónOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9366,10 +9592,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------------------
 
+
+    public void SaigónClose()
+    {
+        azulitos[71].SetActive(false);
+        normalillos[17].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Saígon();
+
+    }
+    //****************************************************************************************************************
+
     //*****************************************************************************************************************
     //EDIFICIO TAIPEI
-
-    public void Taipei()
+    public void TaipéiOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9406,10 +9644,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------------------------
 
+    public void TaipéiClose()
+    {
+        azulitos[54].SetActive(false);
+        normalillos[31].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Taipéi();
+    }
+    //******************************************************************************************************************
+
+
     //*******************************************************************************************************************
     //EDIFICIO TOKIO
-
-    public void Tokio()
+    public void TokioOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9443,10 +9692,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //---------------------------------------------------------------------------------------------------------------------
 
+    public void TokioClose()
+    {
+        azulitos[18].SetActive(false);
+        normalillos[67].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Tokio();
+    }
+    //********************************************************************************************************************
+
+
     //*********************************************************************************************************************
     //EDIFICIO SAN JUAN
-
-    public void SanJuan()
+    public void SanJuanOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9480,9 +9740,22 @@ public class Controller_edificios : MonoBehaviour
     //---------------------------------------------------------------------------------------------------------------------
 
 
+    public void SanJuanClose()
+    {
+        azulitos[44].SetActive(false);
+        normalillos[34].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_SanJuan();
+    }
+    //*********************************************************************************************************************
+
+
+
     //*********************************************************************************************************************
     //EDIFICIO KINGSTON
-    public void Kingston()
+    public void KingstonOpen()
 
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9517,10 +9790,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------------------------------
 
+    public void KingstonClose()
+    {
+        azulitos[48].SetActive(false);
+        normalillos[57].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Kingston();
+    }
+
+
     //**********************************************************************************************************************
     //EDIFICIO HABANA
-
-    public void Habana()
+    public void HabanaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9556,11 +9839,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //---------------------------------------------------------------------------------------------------------------------
 
+    public void HabanaClose()
+    {
+        azulitos[14].SetActive(false);
+        normalillos[52].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Habana();
+    }
+    //*********************************************************************************************************************
 
 
     //*********************************************************************************************************************
     //EDIFICIO SAN JOSÉ
-    public void SanJosé()
+    public void SanJoséOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9595,10 +9888,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------------------------
 
+    public void SanJoséClose()
+    {
+        azulitos[58].SetActive(false);
+        normalillos[39].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_SanJosé();
+    }
+    //************************************************************************************************************************
+
+
+
     //************************************************************************************************************************
     //EDIFICIO PANAMÁ
-
-    public void Panamá()
+    public void PanamáOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9632,10 +9937,23 @@ public class Controller_edificios : MonoBehaviour
     //---------------------------------------------------------------------------------------------------------------------------
 
 
+    public void PanamáClose()
+    {
+        azulitos[51].SetActive(false);
+        normalillos[33].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Panamá();
+    }
+    //***************************************************************************************************************************
+
+
+
     //****************************************************************************************************************************
     //EDIFICIO MANAGUA
 
-    public void Managua()
+    public void ManaguaOpen()
     {
 
         //SI NO HAY UN EDIFICIO SELECCIONADO
@@ -9669,9 +9987,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //--------------------------------------------------------------------------------------------------------------------------
 
+    public void ManaguaClose()
+    {
+        azulitos[31].SetActive(false);
+        normalillos[7].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Managua();
+    }
+    //*************************************************************************************************************************
+
+
+
     //**************************************************************************************************************************
     //EDIFICIO TEGUCIGALPA
-    public void Tegucigalpa()
+    public void TegucigalpaOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9704,9 +10035,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //--------------------------------------------------------------------------------------------------------------------------
 
+    public void TegucigalpaClose()
+    {
+        azulitos[34].SetActive(false);
+        normalillos[1].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Tegucigalpa();
+    }
+    //**************************************************************************************************************************
+
+
+
     //**************************************************************************************************************************
     //EDIFICIO NUEVA YORK
-    public void NuevaYork()
+    public void NuevaYorkOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9738,10 +10082,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //---------------------------------------------------------------------------------------------------------------------------
 
+    public void NuevaYorkClose()
+    {
+        azulitos[42].SetActive(false);
+        normalillos[49].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_NuevaYork();
+    }
+    //***************************************************************************************************************************
+
+
+
     //****************************************************************************************************************************
     //EDIFICIO BUENOS AIRES
-
-    public void BuenosAires()
+    public void BuenosAiresOpen()
     {
         //SI NO HAY UN EDIFICIO SELECCIONADO
         if (edificio_blue == false)
@@ -9775,9 +10131,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------------------------------------------
 
+    public void BuenosAiresClose()
+    {
+        azulitos[28].SetActive(false);
+        normalillos[35].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_BuenosAires();
+    }
+
+
     //**********************************************************************************************************************************
     //EDIFICIO OTAWA
-    public void Otawa()
+    public void OtawaOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -9814,10 +10181,23 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------------------------------------------
 
-    //*************************************************************************************************************************************
 
+    public void OtawaClose()
+    {
+        azulitos[8].SetActive(false);
+        normalillos[51].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Otawa();
+    }
+    //************************************************************************************************************************************
+
+
+
+    //*************************************************************************************************************************************
     //EDIFICIO EL CAIRO
-    public void ElCairo()
+    public void ElCairoOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -9852,9 +10232,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //-----------------------------------------------------------------------------------------------------------------------------------------
 
+    public void ElCairoClose()
+    {
+        azulitos[64].SetActive(false);
+        normalillos[54].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_ElCairo();
+    }
+    //****************************************************************************************************************************************
+
+
+
     //*****************************************************************************************************************************************
     //EDIFICIO TORONTO
-    public void Toronto()
+    public void TorontoOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -9890,9 +10283,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------------------------------------------------
 
+    public void TorontoClose()
+    {
+        azulitos[63].SetActive(false);
+        normalillos[5].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Toronto();
+    }
+
+
+
     //****************************************************************************************************************************************
     //EDIFICIO TRIPOLI
-    public void Tripoli()
+    public void TrípoliOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -9927,9 +10332,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------------------------------------------------
 
+    public void TrípoliClose()
+    {
+        azulitos[17].SetActive(false);
+        normalillos[32].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Trípoli();
+    }
+    //**************************************************************************************************************************************
+
+
+
     //***************************************************************************************************************************************
     //EDIFICIO MONTEVIDEO
-    public void MonteVideo()
+    public void MonteVideoOpen()
     {
 
         //***************************************************
@@ -9967,10 +10385,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //-------------------------------------------------------------------------------------------------------------------------------------
 
+    public void MonteVideoClose()
+    {
+        azulitos[46].SetActive(false);
+        normalillos[9].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_MonteVideo();
+    }
+    //*************************************************************************************************************************************
+
 
     //****************************************************************************************************************************************
     //EDIFICIO LUANDA
-    public void Luanda()
+    public void LuandaOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10007,9 +10436,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //---------------------------------------------------------------------------------------------------------------------------------------------
 
+    public void LuandaClose()
+    {
+        azulitos[60].SetActive(false);
+        normalillos[22].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Luanda();
+    }
+    //*********************************************************************************************************************************************
+
+
     //*********************************************************************************************************************************************
     //EDIFICIO SANTIAGO
-    public void Santiago()
+    public void SantiagoOpen()
     {
         if (edificio_blue == false)
         {
@@ -10043,9 +10484,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------------------------------------------
 
+    public void SantiagoClose()
+    {
+        azulitos[67].SetActive(false);
+        normalillos[68].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Santiago();
+    }
+    //*****************************************************************************************************************************************
+
+
+
     //******************************************************************************************************************************************
     //EDIFICIO ASUNCIÓN
-    public void Asunción()
+    public void AsunciónOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10081,9 +10535,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //----------------------------------------------------------------------------------------------------------------------------------------------
 
+    public void AsunciónClose()
+    {
+        azulitos[36].SetActive(false);
+        normalillos[61].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Asunción();
+    }
+    //*********************************************************************************************************************************************
+
+
+
     //**********************************************************************************************************************************************
     //EDIFICIO SAN SALVADOR
-    public void SanSalvador()
+    public void SanSalvadorOpen()
     {
         if (edificio_blue == false)
         {
@@ -10119,11 +10586,21 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //---------------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
 
-    //*********************************************************************************************************************************************
+    public void SanSalvadorClose()
+    {
+        azulitos[12].SetActive(false);
+        normalillos[27].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_SanSalvador();
+    }
+
+    //*************************************************************************
     //EDIFICIO BOGOTÁ
-    public void Bogotá()
+    public void BogotáOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10133,6 +10610,7 @@ public class Controller_edificios : MonoBehaviour
             normalillos[58].tag = tagNew;
             recolector = normalillos[58];
             recolector.SetActive(false);
+
         }
 
 
@@ -10158,11 +10636,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //----------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
-    //***************************************************************************************************************************************
+    public void BogotáClose()
+    {
+        azulitos[52].SetActive(false);
+        normalillos[58].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Bogotá();
+    }
+    //**************************************************************************
+
+
+    //**************************************************************************
     //EDIFICIO CARACAS
-    public void Caracas()
+    public void CaracasOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10198,11 +10688,26 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //---------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------
 
-    //*********************************************************************************************************************************************
+    public void CaracasClose()
+    {
+        azulitos[66].SetActive(false);
+        normalillos[38].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Caracas();
+    }
+    //************************************************************************
+
+
+
+
+
+    //*************************************************************************
     //EDIFICIO SANTO DOMINGO
-    public void SantoDomingo()
+    public void SantoDomingoOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10239,11 +10744,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //-----------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------
 
-    //**********************************************************************************************************************************************
+    public void SantoDomingoClose()
+    {
+        azulitos[11].SetActive(false);
+        normalillos[8].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_SantoDomingo();
+    }
+    //**************************************************************************************************
+
+
+    //**************************************************************************************************
     //EDIFICIO QUITO
-    public void Quito()
+    public void QuitoOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10280,9 +10797,21 @@ public class Controller_edificios : MonoBehaviour
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //**************************************************************************************************************************************************
+
+    public void QuitoClose()
+    {
+        azulitos[32].SetActive(false);
+        normalillos[46].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Quito();
+    }
+    //********************************************************************
+
+    //*********************************************************************
     //EDIFICIO MINESOTA
-    public void Minesota()
+    public void MinesotaOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10320,9 +10849,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+    public void MinesotaClose()
+    {
+        azulitos[65].SetActive(false);
+        normalillos[48].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Minesota();
+    }
+
     //*************************************************************************************************************************************************
     //EDIFICIO SIRIA
-    public void Siria()
+    public void SiriaOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10357,11 +10897,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //---------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-    //***************************************************************************************************************************************************
+    public void SiriaClose()
+    {
+        azulitos[0].SetActive(false);
+        normalillos[3].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Siria();
+    }
+    //********************************************************************
+
+
+    //*********************************************************************
     //EDIFICIO SOFÍA
-    public void Sofía()
+    public void SofíaOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10398,11 +10950,24 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------
 
-    //*******************************************************************************************************************************************************
+    public void SofíaClose()
+    {
+        azulitos[43].SetActive(false);
+        normalillos[65].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Sofía();
+    }
+    //***********************************************************
+
+
+
+    //***********************************************************
     //EDIFICIO EL CABO
-    public void ElCabo()
+    public void ElCaboOpen()
     {
         //***************************************************
         //Código para cuando no haya un edificio seleccionado
@@ -10436,9 +11001,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    public void ElCaboClose()
+    {
+        azulitos[21].SetActive(false);
+        normalillos[45].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_ElCabo();
+    }
+
+
     //**************************************************************************************************************************************************************
     //EDIFICIO ANKARA
-    public void Ankara()
+    public void AnkaraOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10475,9 +11051,20 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    public void AnkaraClose()
+    {
+        azulitos[33].SetActive(false);
+        normalillos[59].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Ankara();
+    }
+
+
     //************************************************************************************************************************************************************
     //EDIFICIO TUNÉZ
-    public void Túnez()
+    public void TúnezOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10514,11 +11101,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------
 
-    //**************************************************************************************************************************************************************
+    public void TúnezClose()
+    {
+        azulitos[6].SetActive(false);
+        normalillos[28].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Túnez();
+    }
+    //*******************************************************************
+
+
+    //*******************************************************************
     //EDIFICIO SINGAPUR
-    public void Singapur()
+    public void SingapurOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10552,11 +11151,24 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-    //*****************************************************************************************************************************************************************
+    public void SingapurClose()
+    {
+        azulitos[9].SetActive(false);
+        normalillos[50].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Singapur();
+    }
+    //**********************************************************************
+
+
+
+    //*************************************************************************
     //EDIFICIO ESLOVAQUIA
-    public void Eslovaquia()
+    public void EslovaquiaOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10592,11 +11204,22 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------
+    public void EslovaquiaClose()
+    {
+        azulitos[72].SetActive(false);
+        normalillos[30].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Eslovaquia();
+    }
+    //*********************************************************
 
-    //******************************************************************************************************************************************************************
-    //EDIFICIO HONOLULU
-    public void Honolulu()
+
+
+    //*******************************************************************
+    public void HonoluluOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10630,11 +11253,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------
 
-    //********************************************************************************************************************************************************************
-    //EDIFICIO CANBERRA
-    public void Canberra()
+    public void HonoluluClose()
+    {
+        azulitos[41].SetActive(false);
+        normalillos[43].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Honolulu();
+    }
+    //*********************************************************
+
+
+
+    //**********************************************************
+    public void CanberraOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10669,11 +11304,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------
+    public void CanberraClose()
+    {
+        azulitos[37].SetActive(false);
+        normalillos[44].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Canberra();
+    }
+    //**********************************************************************
 
-    //******************************************************************************************************************************************************************
+
+
+    //************************************************************************
     //EDIFICIO BRASILIA
-    public void Brasilia()
+    public void BrasiliaOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10708,11 +11355,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------
+    public void BrasiliaClose()
+    {
+        azulitos[26].SetActive(false);
+        normalillos[37].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Brasilia();
+    }
+    //*****************************************************************
 
-    //********************************************************************************************************************************************************************
+
+
+    //*****************************************************************
     //EDIFICIO YOKOHAMA
-    public void Yokohama()
+    public void YokohamaOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10748,9 +11407,22 @@ public class Controller_edificios : MonoBehaviour
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //**************************************************************************************************************************************************************************
+
+    public void YokohamaClose()
+    {
+        azulitos[22].SetActive(false);
+        normalillos[55].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Yokohama();
+    }
+    //*******************************************************
+
+
+    //**********************************************************
     //EDIFICIO GUATEMALA
-    public void Guatemala()
+    public void GuatemalaOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10785,11 +11457,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-    //***********************************************************************************************************************************************************************
+    public void GuatemalaClose()
+    {
+        azulitos[4].SetActive(false);
+        normalillos[60].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Guatemala();
+    }
+    //*********************************************************************
+
+
+    //*********************************************************************
     //EDIFICIO WASHINGTON
-    public void Washington()
+    public void WashingtonOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10824,11 +11508,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------
+    public void WashingtonClose()
+    {
+        azulitos[23].SetActive(false);
+        normalillos[73].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Washington();
+    }
+    //*************************************************************
 
-    //*********************************************************************************************************************************************************************
+
+
+    //**************************************************************
     //EDIFICIO DACCA 
-    public void Dacca()
+    public void DaccaOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10862,11 +11558,23 @@ public class Controller_edificios : MonoBehaviour
             }
         }
     }
-    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------
 
-    //************************************************************************************************************************************************************************
+    public void DaccaClose()
+    {
+        azulitos[10].SetActive(false);
+        normalillos[26].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Dacca();
+    }
+    //********************************************************************
+
+
+    //*********************************************************************
     //EDIFICIO HAMBURGO
-    public void Hamburgo()
+    public void HamburgoOpen()
     {
         //************************************************
         //Código para cuando haya un edificio seleccionado
@@ -10902,6 +11610,17 @@ public class Controller_edificios : MonoBehaviour
                 recolector.SetActive(false);
             }
         }
+    }
+
+
+    public void HamburgoClose()
+    {
+        azulitos[62].SetActive(false);
+        normalillos[23].tag = tagNameNormal;
+        recolector.SetActive(true);
+        recolector = null;
+        TapCount = 0;
+        ux.ResetButtons_Hamburgo();
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //************************************************************************************************************************************************************************
