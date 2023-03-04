@@ -30,13 +30,29 @@ public class CameraPan : MonoBehaviour
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
+
             Vector2 TouchDeltaPosition = Input.GetTouch(0).deltaPosition;
             transform.Translate(-TouchDeltaPosition.x * Speed, -TouchDeltaPosition.y * Speed, 0);
 
+            //La funcion Mathf.Clamp se utiliza para restringir la posicion de la camara
+            //dentro de ciertos limites en cada eje (x,y,z) esto ayuda a evitar que la camara 
+            //se salga de la pantalla o del area de juego
                 transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, -64.7f, 26.2f),
+
+                    //delimitamos en x 
+                    //posmax y posmin
+                Mathf.Clamp(transform.position.x, -53.4f, 10f),
+                //delimitamos en y
+                //ocupamos las variables que nos ayudan
+                //a hacer un zoom in zoom out desde otro codigo
+
+                //esas variables las toma como referencia para delimitar
+                //el zoom in zoom out
                 Mathf.Clamp(transform.position.y, sc.CameraLowerHeightBound, sc.CameraUpperHeightBound),
-                Mathf.Clamp(transform.position.z, -72.86f, 28.9f));
+
+                //delimitamos en z 
+                //posmax y posmin
+                Mathf.Clamp(transform.position.z, -58.61f, 15.8f));
 
 
         }
